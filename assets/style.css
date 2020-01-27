@@ -1,0 +1,14 @@
+.google-font{
+    font-family: 'Bowlby One SC', cursive;
+}
+
+.height{
+   line-height: 4rem;
+}
+
+body{
+    background-image: url(background.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+	overflow:scroll;
+}
