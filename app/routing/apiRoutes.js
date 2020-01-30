@@ -19,13 +19,14 @@ module.exports = function(app) {
       console.log("friend Data:");
       console.log(req.body);
 
-      friends.push(req.body)
+      friends.push(req.body);
+      console.log(friends);
   
       
         // `results` here would be the newly created chirp
         res.end();
       });
   
-    
+      
   
   };

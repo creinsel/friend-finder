@@ -23,7 +23,7 @@
                   <h3 class="card-title google-font">Your new friend is waiting to connect with you!</h3>
                   
                   <hr>
-                  <form method="POST" role="form" name="" onsubmit="">
+                  <form method="POST" role="form" action="/api/friends">
                     <h6>Tell us a little about yourself:</h6>
                     <div class="form-group">
                       <label for="name"><strong>Name (Required)</strong></label>
@@ -39,20 +39,20 @@
                     <div class="form-group">
                       <label for="Q1"><strong>Question 1</strong></label>
                       <p class="card-text">Your mind is always buzzing with unexplored ideas and plans.</p>
-                      <select class="custom-select" id="0">
+                      <select class="custom-select" id="0" name="scores">
                         <option selected="">Select an option</option>
-                        <option value="1">Strongly Disagree</option>
-                        <option value="2">Disagree</option>
-                        <option value="3">Neutral</option>
-                        <option value="4">Agree</option>
-                        <option value="5">Strongly Agree</option>
+                        <option value=1>Strongly Disagree</option>
+                        <option value=2>Disagree</option>
+                        <option value=3>Neutral</option>
+                        <option value=4>Agree</option>
+                        <option value=5>Strongly Agree</option>
                       </select>
                     </div>
 
                     <div class="form-group">
                       <label for="Q2"><strong>Question 2</strong></label>
                       <p class="card-text">Generally speaking, you rely more on your experience than your imagination.</p>
-                      <select class="custom-select" id="1">
+                      <select class="custom-select" id="1" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -65,7 +65,7 @@
                     <div class="form-group">
                       <label for="Q3"><strong>Question 3</strong></label>
                       <p class="card-text">You find it easy to stay relaxed and focused even when there is some pressure.</p>
-                      <select class="custom-select" id="2">
+                      <select class="custom-select" id="2" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -78,7 +78,7 @@
                     <div class="form-group">
                       <label for="Q4"><strong>Question 4</strong></label>
                       <p class="card-text">You rarely do something just out of sheer curiosity.</p>
-                      <select class="custom-select" id="3">
+                      <select class="custom-select" id="3" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -91,7 +91,7 @@
                     <div class="form-group">
                       <label for="Q5"><strong>Question 5</strong></label>
                       <p class="card-text">People can rarely upset you.</p>
-                      <select class="custom-select" id="4">
+                      <select class="custom-select" id="4" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -104,7 +104,7 @@
                     <div class="form-group">
                       <label for="Q6"><strong>Question 6</strong></label>
                       <p class="card-text">It is often difficult for you to relate to other people’s feelings.</p>
-                      <select class="custom-select" id="5">
+                      <select class="custom-select" id="5" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -117,7 +117,7 @@
                     <div class="form-group">
                       <label for="Q7"><strong>Question 7</strong></label>
                       <p class="card-text">In a discussion, truth should be more important than people’s sensitivities.</p>
-                      <select class="custom-select" id="6">
+                      <select class="custom-select" id="6" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -130,7 +130,7 @@
                     <div class="form-group">
                       <label for="Q8"><strong>Question 8</strong></label>
                       <p class="card-text">You rarely get carried away by fantasies and ideas.</p>
-                      <select class="custom-select" id="7">
+                      <select class="custom-select" id="7" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -143,7 +143,7 @@
                     <div class="form-group">
                       <label for="Q9"><strong>Question 9</strong></label>
                       <p class="card-text">You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
-                      <select class="custom-select" id="8">
+                      <select class="custom-select" id="8" name="scores">
                         <option selected="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
@@ -156,8 +156,8 @@
                     <div class="form-group">
                       <label for="Q10"><strong>Question 10</strong></label>
                       <p class="card-text">You feel more energetic after spending time with a group of people.</p>
-                      <select class="custom-select" id="9">
-                        <option selected="">Select an option</option>
+                      <select class="custom-select" id="9" name="scores">
+                        <option value="">Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -187,7 +187,8 @@
             </div>
           </div>
         </div>
-        <script src="sweetalert2.all.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        
         <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script src="" async defer></script>
@@ -199,18 +200,8 @@
 
             let name=$("#name").val().trim();
             let photo=$("#photo").val().trim();
-            let q1=$("#0").val();
-            let q2=$("#1").val();
-            let q3=$("#2").val();
-            let q4=$("#3").val();
-            let q5=$("#4").val();
-            let q6=$("#5").val();
-            let q7=$("#6").val();
-            let q8=$("#7").val();
-            let q9=$("#8").val();
-            let q10=$("#9").val();
-
-            if(name==="" ||photo=== ""|| q1===""|| q2===""|| q3===""|| q4===""|| q5===""|| q6===""|| q7===""|| q8===""|| q9===""|| q10===""){
+            
+            if(name==="" ||photo=== ""|| scores==="Select an option"){
          
                 
                 Swal.fire({
@@ -225,10 +216,12 @@
                     newFriend={
                         name:name,
                         photo:photo,
-                        scores:[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+                        scores:scores
 
                     }
                     newFriend.push(friends)
+                    console.log("friends: ", friends)
+                    
                 }
                     
             })
