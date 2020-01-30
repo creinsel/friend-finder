@@ -11,7 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="../../assets/style.css">
+        
         <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    
     </head>
     <body class='container'>
         <h1 class="invisible"> hello</h1>
@@ -184,7 +187,51 @@
             </div>
           </div>
         </div>
-
+        <script src="sweetalert2.all.min.js"></script>
+        <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script src="" async defer></script>
+
+        <script>
+        $(".submit").on("click", function(event){
+            event.preventDefault();
+
+
+            let name=$("#name").val().trim();
+            let photo=$("#photo").val().trim();
+            let q1=$("#0").val();
+            let q2=$("#1").val();
+            let q3=$("#2").val();
+            let q4=$("#3").val();
+            let q5=$("#4").val();
+            let q6=$("#5").val();
+            let q7=$("#6").val();
+            let q8=$("#7").val();
+            let q9=$("#8").val();
+            let q10=$("#9").val();
+
+            if(name==="" ||photo=== ""|| q1===""|| q2===""|| q3===""|| q4===""|| q5===""|| q6===""|| q7===""|| q8===""|| q9===""|| q10===""){
+         
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please make sure you have answered all questions',
+                    footer: 'We want to make sure we find you a great match'
+                    })
+
+                }
+                else{
+                    newFriend={
+                        name:name,
+                        photo:photo,
+                        scores:[q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
+
+                    }
+                    newFriend.push(friends)
+                }
+                    
+            })
+        </script>
     </body>
 </html>
