@@ -1,5 +1,6 @@
 var friends=require("../data/friends")
 
+
 module.exports = function(app) {
 
     // Get all friends
@@ -7,6 +8,37 @@ module.exports = function(app) {
   
      
       friend.findAll({}).then(function(results) {
+
+        $(".submit").on("click", function(event){
+          event.preventDefault();
+
+          
+
+
+          let name=$("#name").val().trim();
+          let photo=$("#photo").val().trim();
+          
+          console.log("hi my name is: ", name)
+
+          if(name==="" ||photo=== ""|| scores==="Select an option"){
+       
+              
+              alert("Please answer all questions")
+
+              }
+              else{
+                  newFriend={
+                      name:name,
+                      photo:photo,
+                      scores:scores
+
+                  }
+                  newFriend.push(friends)
+                  console.log("friends: ", friends)
+                  
+              }
+                  
+          })
         // results are available to us inside the .then
         res.json(results);
       });

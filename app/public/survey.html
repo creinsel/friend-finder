@@ -10,7 +10,7 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link rel="stylesheet" href="../../assets/style.css">
+        <link rel="stylesheet" href="assets/style.css">
         
         <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -187,44 +187,13 @@
             </div>
           </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         
-        <!-- Optional: include a polyfill for ES6 Promises for IE11 -->
-        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script src="" async defer></script>
 
         <script>
-        $(".submit").on("click", function(event){
-            event.preventDefault();
+          
 
-
-            let name=$("#name").val().trim();
-            let photo=$("#photo").val().trim();
-            
-            if(name==="" ||photo=== ""|| scores==="Select an option"){
-         
-                
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Please make sure you have answered all questions',
-                    footer: 'We want to make sure we find you a great match'
-                    })
-
-                }
-                else{
-                    newFriend={
-                        name:name,
-                        photo:photo,
-                        scores:scores
-
-                    }
-                    newFriend.push(friends)
-                    console.log("friends: ", friends)
-                    
-                }
-                    
-            })
+       
         </script>
     </body>
 </html>
