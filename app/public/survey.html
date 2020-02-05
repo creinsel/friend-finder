@@ -40,7 +40,7 @@
                       <label for="Q1"><strong>Question 1</strong></label>
                       <p class="card-text">Your mind is always buzzing with unexplored ideas and plans.</p>
                       <select class="custom-select" id="0" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value=1>Strongly Disagree</option>
                         <option value=2>Disagree</option>
                         <option value=3>Neutral</option>
@@ -53,7 +53,7 @@
                       <label for="Q2"><strong>Question 2</strong></label>
                       <p class="card-text">Generally speaking, you rely more on your experience than your imagination.</p>
                       <select class="custom-select" id="1" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -66,7 +66,7 @@
                       <label for="Q3"><strong>Question 3</strong></label>
                       <p class="card-text">You find it easy to stay relaxed and focused even when there is some pressure.</p>
                       <select class="custom-select" id="2" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -79,7 +79,7 @@
                       <label for="Q4"><strong>Question 4</strong></label>
                       <p class="card-text">You rarely do something just out of sheer curiosity.</p>
                       <select class="custom-select" id="3" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -92,7 +92,7 @@
                       <label for="Q5"><strong>Question 5</strong></label>
                       <p class="card-text">People can rarely upset you.</p>
                       <select class="custom-select" id="4" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -105,8 +105,8 @@
                       <label for="Q6"><strong>Question 6</strong></label>
                       <p class="card-text">It is often difficult for you to relate to other people’s feelings.</p>
                       <select class="custom-select" id="5" name="scores">
-                        <option selected="">Select an option</option>
-                        <option value="1">Strongly Disagree</option>
+                        <option value="">Select an option</option>
+                        <option value="1" selected>Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
                         <option value="4">Agree</option>
@@ -118,7 +118,7 @@
                       <label for="Q7"><strong>Question 7</strong></label>
                       <p class="card-text">In a discussion, truth should be more important than people’s sensitivities.</p>
                       <select class="custom-select" id="6" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -131,7 +131,7 @@
                       <label for="Q8"><strong>Question 8</strong></label>
                       <p class="card-text">You rarely get carried away by fantasies and ideas.</p>
                       <select class="custom-select" id="7" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -144,7 +144,7 @@
                       <label for="Q9"><strong>Question 9</strong></label>
                       <p class="card-text">You think that everyone’s views should be respected regardless of whether they are supported by facts or not.</p>
                       <select class="custom-select" id="8" name="scores">
-                        <option selected="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -157,7 +157,7 @@
                       <label for="Q10"><strong>Question 10</strong></label>
                       <p class="card-text">You feel more energetic after spending time with a group of people.</p>
                       <select class="custom-select" id="9" name="scores">
-                        <option value="">Select an option</option>
+                        <option value="" selected>Select an option</option>
                         <option value="1">Strongly Disagree</option>
                         <option value="2">Disagree</option>
                         <option value="3">Neutral</option>
@@ -187,11 +187,71 @@
             </div>
           </div>
         </div>
+
         
-        <script src="" async defer></script>
+<!-- Modal -->
+<div class="modal fade" id="results" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="">Say Hey to Your New Friend</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2 id="bfName"></h2>
+            <img id="bfPic" src="../public/assets/friends2.jpg"/>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
         <script>
-          
+         $(".submit").on("click", function(event){
+           function validateForm(){
+             var isValid = true;
+             $(".form-control").each(function(){
+               if ($(".form-control").val()=== "") isValid = false;
+             });
+             $(".custom-select").each(function(){
+               if ($(".custom-select").val()=== "") isValid = false;
+             });
+             return isValid;
+           }
+           if (validateForm()=== true){
+             var userData={
+               name: $("#name").val().trim(),
+               photo: $("#photo").val().trim(),
+               scores: [
+              $("#0").val(),
+              $("#1").val(),
+              $("#2").val(),
+              $("#3").val(),
+              $("#4").val(),
+              $("#5").val(),
+              $("#6").val(),
+              $("#7").val(),
+              $("#8").val(),
+              $("#9").val()
+               ]
+             };
+             var currentURL = window.location.origin;
+
+             $.post(currentURL + "/api/friends", userData, function(data){
+               $("#bfName").text(data.name);
+               $("#bfPic").attr("src", data.photo);
+
+               $("#results").modal("toggle");
+             });
+           }  else {
+             alert("Please answer all questions");
+           }
+           return false;
+         }) 
 
        
         </script>
