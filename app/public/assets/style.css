@@ -12,3 +12,8 @@ body{
     background-attachment: fixed;
 	overflow:scroll;
 }
+
+.pic-size{
+    height:200px;
+    width: 220px;
+}
