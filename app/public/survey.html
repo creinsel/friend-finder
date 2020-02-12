@@ -14,6 +14,12 @@
         
         <link href="https://fonts.googleapis.com/css?family=Bowlby+One+SC&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     
     </head>
     <body class='container'>
@@ -165,7 +171,7 @@
                         <option value="5">Strongly Agree</option>
                       </select>
                     </div>
-                    <button type="submit" class="btn btn-primary submit">Submit</button>
+                    <button type="submit" class="btn btn-primary submit" onsubmit="validateForm()" data-toggle="modal" data-target="#results" >Submit</button>
                   </form>
                 </div>
             </div>
@@ -173,8 +179,8 @@
             <div class="row m-1">
                 <div class="col-md-4"></div>
                 <div class="col-md-4"><ul class="list-group list-group-horizontal-sm">
-                <a href=""><li class="list-group-item">API Friends List</li></a>
-                <a href=""><li class="list-group-item">Git Repo</li></a></div>
+                <a href="/api/friends"><li class="list-group-item">API Friends List</li></a>
+                <a href="https://github.com/creinsel/friend-finder"><li class="list-group-item">Git Repo</li></a></div>
                 <div class="col-md-4"></div>
               
                 
@@ -194,13 +200,13 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="">Say Hey to Your New Friend</h5>
+        <h2 class="modal-title" id="">Say Hey to Your New Friend</h2>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <h2 id="bfName"></h2>
+        <h5 id="bfName"></h5>
             <img id="bfPic" src="../public/assets/friends2.jpg"/>
       </div>
       <div class="modal-footer">
@@ -214,9 +220,11 @@
          $(".submit").on("click", function(event){
            function validateForm(){
              var isValid = true;
+             console.log($(".form-control").val())
              $(".form-control").each(function(){
                if ($(".form-control").val()=== "") isValid = false;
              });
+             
              $(".custom-select").each(function(){
                if ($(".custom-select").val()=== "") isValid = false;
              });
@@ -241,16 +249,23 @@
              };
              var currentURL = window.location.origin;
 
-             $.post(currentURL + "/api/friends", userData, function(data){
-               $("#bfName").text(data.name);
-               $("#bfPic").attr("src", data.photo);
+             $("#results").modal("toggle");
+            
 
-               $("#results").modal("toggle");
+             $.post(currentURL + "/api/friends", userData, function(data){
+             
+              console.log("name: ", data.name);
+
+              $("#bfName").text(data.name);
+             $("#bfPic").attr("src", data.photo);
+
+               
              });
            }  else {
              alert("Please answer all questions");
            }
            return false;
+          
          }) 
 
        
