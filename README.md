@@ -5,7 +5,7 @@ A compatibility-based "FriendFinder" application. This full-stack site takes in 
 
 
 ### How to Run
-This app is deployed through heroku and can be accessed by visiting this site: https://hidden-lowlands-14815.herokuapp.com/.
+[App Deployed Here](https://hidden-lowlands-14815.herokuapp.com/) 
 
 Once there, click the getstarted button to fill out a survey. Answer all required fields & questions. Hit submit and await your "perfect" match!
 
